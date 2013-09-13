@@ -1,4 +1,3 @@
-briquette
-=========
+# Briquette
 
-A campfire chat client for Mac OS X written in MacRuby
+A Campfire client utilizing 37signal's official API by Bearded

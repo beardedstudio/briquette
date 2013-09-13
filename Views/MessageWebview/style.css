@@ -1,0 +1,368 @@
+html {
+  overflow-y: auto;
+  background-color: transparent;
+}
+body {
+  margin: 0 5px 4px 10px;
+  padding: 1em 5px 0 0;
+  font-family: Arial;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+body.lion {
+  position: relative;
+}
+/************************************
+* Clearfix 
+************************************/
+.clearfix:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+.clearfix {
+  display: inline-block;
+}
+/************************************
+* Color
+************************************/
+.type1 {
+  color: #363636;
+}
+.type2 {
+  color: #7d7d7d;
+}
+.type3 {
+  color: #bbbbbb;
+}
+.emph {
+  color: #859c5a;
+}
+.emph_bg {
+  background-color: #eff5e7;
+}
+.de-emph {
+  color: #538193;
+}
+.de-emph_bg {
+  background-color: #ebeff2;
+}
+/************************************
+* Typography
+************************************/
+body {
+  line-height: 1.3;
+  font-size: 13px;
+}
+.copy-stack {
+  font-family: Arial, sans-serif;
+}
+pre {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-button:start:decrement, ::-webkit-scrollbar-button:end:increment {
+  display: block;
+  height: 5px;
+  background-color: transparent;
+}
+::-webkit-scrollbar-track-piece {
+  background-color: #fff;
+  -webkit-border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:vertical {
+  height: 50px;
+  background-color: #ddd;
+  -webkit-border-radius: 6px;
+}
+#messages {
+  width: 100%;
+}
+a {
+  color: #0369b0;
+}
+.message {
+  width: 100%;
+  display: inline-block;
+}
+.message .column {
+  float: left;
+}
+.message .column .wrap {
+  padding: 4px 8px 2px 8px;
+  word-wrap: break-word;
+}
+/************************************
+ * Message Layout 
+ ************************************/
+.room .user, .transcript .user {
+  width: 17%;
+  min-width: 55px;
+}
+.room .content, .transcript .content {
+  width: 74%;
+  min-width: 195px;
+}
+.room .timestamp, .transcript .timestamp {
+  width: 9%;
+}
+.search .user {
+  width: 14%;
+  min-width: 55px;
+}
+.search .content {
+  width: 59%;
+  min-width: 195px;
+}
+.search .date {
+  width: 13%;
+}
+.search .room-name {
+  width: 14%;
+}
+/************************************
+ * Base column styles 
+ ************************************/
+.message .user {
+  text-align: right;
+  font-weight: bold;
+  color: #555555;
+}
+.message .user .wrap {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.message .content {
+  color: #363636;
+}
+.message .content .wrap {
+  position: relative;
+  padding-right: 22px;
+  border-left: 1px solid #dddddd;
+}
+.message .content .wrap .image {
+  padding: 0.5em 0;
+}
+.message .content .wrap img {
+  max-height: 200px;
+  max-width: 90%;
+}
+.message .content .wrap .mention {
+  font-weight: bold;
+  color: #859c5a;
+}
+.message .content .wrap a .mention {
+  font-weight: normal;
+  color: #0369b0;
+}
+.message .content .wrap .reply, .message .content .wrap .transcript {
+  cursor: pointer;
+  display: none;
+  position: absolute;
+  top: 4px;
+  right: 6px;
+  width: 40px;
+  height: 14px;
+  text-indent: -9999px;
+}
+.message .content .wrap .reply {
+  background: url('reply.png') right top no-repeat;
+}
+.message .content .wrap .transcript {
+  background: url('transcript.png') right 2px no-repeat;
+}
+.message .content .wrap .reply:hover {
+  background-image: url('replyHover.png');
+}
+.message .content .wrap .transcript:hover {
+  background-image: url('transcriptHover.png');
+}
+.message .timestamp .wrap, .message .date .wrap {
+  color: #bbbbbb;
+  min-width: 50px;
+}
+.message .timestamp {
+  font-weight: bold;
+  font-size: 0.85em;
+}
+.message .date {
+  font-size: 0.9em;
+}
+.message .room-name {
+  font-size: 0.9em;
+  color: #888888;
+}
+.message:hover .reply, .message:hover .transcript {
+  display: block !important;
+}
+/************************************
+ * Spacing 
+ ************************************/
+.first {
+  margin-top: 16px;
+}
+.first .column .wrap {
+  padding-top: 4px;
+}
+/************************************
+ * Message Types 
+ ************************************/
+.user-message.mine .wrap, .user-message.mentioned .wrap {
+  padding: 8px;
+}
+.user-message.mine .content .wrap, .user-message.mentioned .content .wrap {
+  padding-right: 22px;
+}
+.user-message.mine .reply, .user-message.mentioned .reply {
+  top: 8px !important;
+}
+.user-message.mine .user, .user-message.mine .content {
+  color: #7d7d7d;
+}
+.user-message.mine .content .wrap {
+  background-color: #ebeff2;
+  border-color: #75a3b5;
+}
+.user-message.mentioned .content .wrap {
+  background-color: #eff5e7;
+  border-color: #a7be7c;
+}
+.user-message.search.mine .user .wrap,
+.user-message.search.mentioned .user .wrap,
+.user-message.search.mine .content .wrap,
+.user-message.search.mentioned .content .wrap {
+  color: #363636;
+  border-color: #dddddd;
+  background: none;
+}
+.user-message.search.mine .wrap, .user-message.search.mentioned .wrap {
+  padding: 4px 8px 2px 8px;
+}
+.user-message.search:hover .content .wrap {
+  border-color: #859c5a;
+  background: #eff5e7;
+}
+.system .user, .system .content {
+  color: #bbbbbb;
+  font-weight: normal;
+}
+.system .content .wrap {
+  float: left;
+  background: white;
+  border-left: 2px solid white;
+}
+.joinleave .content {
+  font-size: 0.95em;
+}
+.day {
+  margin-top: 8px;
+  margin-bottom: -8px;
+}
+.day .content {
+  background: url(systemMessageBackground.png) right 8px repeat-x;
+  font-size: 0.875em;
+}
+.day .content .wrap {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.topic .user, .topic .content {
+  color: #7d7d7d;
+}
+.topic .user em, .topic .content em {
+  font-weight: bold;
+  color: #538193;
+}
+.advertisement {
+  margin-bottom: 1em;
+}
+.paste pre {
+  font-size: 0.85em;
+  font-family: monaco, monospace;
+  white-space: pre-wrap;
+}
+.paste .paste-bottom {
+  display: none;
+}
+.paste .expanded {
+  display: block;
+}
+.paste .paste-links {
+  display: block;
+  margin-top: 4px;
+  padding-top: 2px;
+  border-top: 1px dotted #0369b0;
+}
+.paste .paste-links a {
+  color: #0369b0;
+  cursor: pointer;
+  margin-right: 1em;
+  text-decoration: underline;
+  font-size: 80%;
+}
+.mentioned .paste-links {
+  border-color: #859c5a;
+}
+.mentioned .paste-links a {
+  color: #859c5a;
+}
+.sound {
+  cursor: pointer;
+}
+.sound .content .wrap {
+  color: #538193;
+  padding-left: 2.25em;
+  background: url('sound.png') 8px center no-repeat;
+}
+.sound .content .wrap .sound-name {
+  display: none;
+}
+.tweet .wrap .tweet-wrap {
+  display: inline-block;
+  border: 1px solid #ccc;
+  padding: 0.5em;
+  background: white;
+  width: 100%;
+  max-width: 400px;
+}
+.tweet .wrap .tweet-avatar {
+  width: 60px;
+}
+.tweet .wrap .tweet-avatar, .tweet .wrap .tweet-content {
+  float: left;
+}
+.tweet .wrap .tweet-content {
+  width: 80%;
+  max-width: 340px;
+  padding-top: 0.25em;
+}
+.tweet .wrap .tweet-content .tweet-info {
+  padding-top: 0.75em;
+  font-size: 0.9em;
+}
+.meta {
+  margin-top: 0 !important;
+  padding-bottom: 1em;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 1em;
+}
+.meta.last {
+  margin-top: 1em !important;
+  border-top: 1px solid #ccc;
+  padding-top: 1em;
+  border-bottom: none;
+}

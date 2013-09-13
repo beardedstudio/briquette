@@ -1,0 +1,99 @@
+<html>
+<head>
+  <script type="text/javascript" src="jquery.js"></script>
+  <script type="text/javascript" src="jquery.replaceText.js"></script>
+  <link type="text/css" rel="stylesheet" href="style.css">
+  <script type="text/javascript">
+
+    var togglePaste = function(element) {
+      var paste = $(element).parent().prev();
+      paste.toggleClass("expanded");
+      
+      // TODO: replace with regex
+      var text = $(element).text();
+      if (paste.hasClass("expanded")) {
+        text = text.replace("Show", "Hide")
+        text = text.replace("more ", "")
+      } else {
+        text = text.replace("Hide", "Show")      
+        text = text.replace("lines", "more lines")
+      }
+      $(element).text(text);
+    }
+    
+    var toggleStar = function(element) {
+      window.myController.star_($(element).data());
+      $(element).toggleClass("starred");
+    }
+
+    function addMessage(html, posted) {
+      // Create DOM element
+      var message = $(html);
+      $("#messages").append(message);
+          
+      connectMessage(message);
+      
+      if (posted == "true") {
+        $(message).click();
+      }
+    }
+    
+    function updateMessage(html, message_id) {
+      var message = $(html);
+      var id_string = "#messages #" + message_id;
+
+      $(id_string).replaceWith(message);
+      
+      connectMessage(message);
+    }
+    
+    function connectMessage(message) {
+      $(message).find(".reply").click(function() { 
+        window.myController.reply_($(this).data()); 
+      });
+      
+      $(message).find(".transcript").click(function(){
+         window.myController.transcript_($(this).data()); 
+      })
+      
+      // Bind paste expand/collapse link
+      $(message).find(".show-all-paste").click(function(){ 
+        togglePaste(this) 
+      });
+      
+      // Enable sound messages
+      if ($(message).hasClass("sound")) {
+        $(message).click(function() {
+          if ($(this).hasClass("sound")) {
+            window.myController.play_($(this).find(".sound-name").text()); 
+          }
+        });
+      }
+    }
+    
+    function getMessageData(message_id) {
+      var message = $("#"+message_id);
+      
+      var name = $.trim(message.data("user"))
+      var body = ""
+      if (message.hasClass("paste")) {
+        body = message.find(".content .paste-top pre").html()
+        var bottom = message.find(".content .paste-bottom pre").html()
+        if (bottom != null) {
+          body += "<br>" + bottom
+        }
+      } else {
+        body = message.find(".content .wrap").text()
+      }
+      
+      body = $.trim(body);
+      return name + ' "' + body + '"'
+    }
+    
+  </script>
+</head>
+<body>
+  <div id="messages">
+  </div>
+</body>
+</html>

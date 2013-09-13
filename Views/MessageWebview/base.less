@@ -1,0 +1,79 @@
+html {
+  overflow-y: auto;
+  background-color: transparent;
+}
+
+body {
+  margin: 0 5px 4px 10px;
+  padding: 1em 5px 0 0;
+  font-family: Arial;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+body.lion {
+  position: relative;
+}
+
+/************************************
+* Clearfix 
+************************************/
+.clearfix:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+.clearfix {
+  display: inline-block;
+}
+
+/************************************
+* Color
+************************************/
+
+@type1: #363636;
+@type2: #7d7d7d;
+@type3: #bbb;
+@type_name: #555;
+
+@emph: #859c5a;
+@emph_bg: #eff5e7;
+
+@link_color: #0369b0;
+
+@de-emph: #538193;
+@de-emph_bg: #ebeff2;
+
+.type1 {color:@type1;}
+.type2 {color:@type2;}
+.type3 {color:@type3;}
+
+.emph {color:@emph;}
+.emph_bg {background-color:@emph_bg;}
+
+.de-emph {color:@de-emph;}
+.de-emph_bg {background-color:@de-emph_bg;}
+
+/************************************
+* Typography
+************************************/
+body {
+  line-height: 1.3;
+  font-size: 13px;
+}
+
+.copy-stack { font-family: Arial, sans-serif;}
+
+pre {
+  .copy-stack;
+  margin: 0;
+  padding: 0;
+}

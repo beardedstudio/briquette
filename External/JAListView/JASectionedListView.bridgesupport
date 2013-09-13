@@ -1,0 +1,16 @@
+<?xml version='1.0'?>
+<!DOCTYPE signatures SYSTEM "file://localhost/System/Library/DTDs/BridgeSupport.dtd">
+<signatures version='0.9'>
+<enum name='JASectionedListViewHeaderIndex' value='-1'/>
+<class name='JASectionedListView'>
+<method selector='isViewSectionHeaderView:'>
+<retval type='B'/>
+</method>
+</class>
+<informal_protocol name='NSObject'>
+<method type='I16@0:4@8I12' selector='listView:numberOfViewsInSection:'/>
+<method type='@16@0:4@8I12' selector='listView:sectionHeaderViewForSection:'/>
+<method type='@20@0:4@8I12I16' selector='listView:viewForSection:index:'/>
+<method type='I12@0:4@8' selector='numberOfSectionsInListView:'/>
+</informal_protocol>
+</signatures>

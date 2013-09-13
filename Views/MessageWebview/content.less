@@ -1,0 +1,380 @@
+#messages {
+  width: 100%;
+}
+
+a {
+  color: @link_color;
+}
+
+.message {
+  width: 100%;
+  .clearfix;
+
+  .column {
+    float: left;
+    
+    .wrap {
+      padding: 4px 8px 2px 8px;
+      word-wrap: break-word;
+    }
+  }
+}
+
+/************************************
+ * Message Layout 
+ ************************************/
+.room, .transcript {
+  .user {
+    width: 17%;
+    min-width: 55px;
+  }
+  .content {
+    width: 74%;
+    min-width: 195px;
+  }
+  .timestamp {
+    width: 9%;
+  }
+}
+
+.search {
+  .user {
+    width: 14%;
+    min-width: 55px;
+  }
+  .content {
+    width: 59%;
+    min-width: 195px;
+  }
+  .date {
+    width: 13%;
+  }
+  .room-name {
+    width: 14%;
+  }
+}
+
+/************************************
+ * Base column styles 
+ ************************************/
+.message {
+  .user {
+    text-align: right;
+    font-weight: bold;
+    color: @type_name;
+
+    .wrap {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+  
+  .content {
+    .type1;
+    
+    .wrap {
+      position: relative;
+      padding-right: 22px;
+      border-left: 1px solid @type3+#222;      
+    
+      .image {
+        padding: 0.5em 0;
+      }
+      img {
+        max-height: 200px;
+        max-width: 90%;
+      }
+
+      .mention {
+        font-weight: bold;
+        .emph;
+      }
+      a .mention {
+        font-weight: normal;
+        color: @link_color;
+      }
+      
+      .reply, .transcript {
+        cursor: pointer;
+        display: none;
+        position: absolute;
+        top: 4px;
+        right: 6px;
+
+        width: 40px;
+        height: 14px;
+        text-indent: -9999px;
+      }
+      .reply {
+        background: url('reply.png') right top no-repeat;
+      }
+
+      .transcript {
+        background: url('transcript.png') right 2px no-repeat;
+      }
+      
+      .reply:hover {
+        background-image: url('replyHover.png');
+      }
+      
+      .transcript:hover {
+        background-image: url('transcriptHover.png');
+      }
+    }
+  }
+  
+  .timestamp, .date {
+    .wrap {
+      .type3;
+      min-width: 50px;
+    }
+  }
+  
+  .timestamp {
+    font-weight: bold;    
+    font-size: 0.85em;
+  }
+
+  .date {
+    font-size: 0.9em;
+  }
+  
+  .room-name {
+    font-size: 0.9em;
+    color: @type3 - #333;
+  }
+}
+
+.message:hover {
+  .reply, .transcript {
+    display: block !important;
+  }
+}
+
+/************************************
+ * Spacing 
+ ************************************/
+.first {
+  margin-top: 16px;
+  .column .wrap {
+    padding-top: 4px;
+  }
+}
+
+/************************************
+ * Message Types 
+ ************************************/
+ 
+// MINE, MENTIONED
+.user-message.mine, .user-message.mentioned {
+  .wrap {
+    padding: 8px;
+  }
+  .content .wrap {
+    padding-right: 22px;
+  }
+  .reply {
+    top: 8px !important;
+  }
+}
+
+
+.user-message.mine {
+  .user, .content {
+    .type2;
+  }
+
+  .content .wrap {
+    .de-emph_bg;
+    border-color: @de-emph + #222;
+  }
+}
+ 
+.user-message.mentioned {
+  .content .wrap {
+    .emph_bg;          
+    border-color: @emph + #222;
+  }
+}
+
+.user-message.search.mine, .user-message.search.mentioned {
+  .user, .content {
+    .wrap {
+      .type1;
+      border-color: @type3+#222;
+      background: none;      
+    }
+  }
+
+  .wrap {
+    padding: 4px 8px 2px 8px;
+  }
+}
+
+.user-message.search:hover {
+  .content .wrap {
+    border-color: @emph;
+    background: @emph_bg;
+  }
+}
+
+
+// SYSTEM
+.system {
+  .user, .content {
+    .type3;
+    font-weight: normal;
+  }
+  
+  .content {    
+    .wrap {
+      float: left;
+      background: white;
+      border-left: 2px solid white;
+    }
+  }
+    
+}
+
+// JOIN and LEAVE
+.joinleave {
+  .content {
+    font-size: 0.95em;
+  }
+}
+
+// DAY breaks
+.day {
+  .content {
+    background: url(systemMessageBackground.png) right 8px repeat-x;
+    font-size: 0.875em;
+
+    .wrap {
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+  }
+
+  margin-top: 8px;
+  margin-bottom: -8px;
+}
+
+.topic {
+  .user, .content {
+    .type2;
+    
+    em {
+      font-weight: bold;
+      .de-emph;
+    }
+  }
+}
+
+// ADVERTISEMENTS
+.advertisement {
+  margin-bottom: 1em;
+}
+
+// PASTES
+.paste {
+  pre {
+    font-size: 0.85em;
+    font-family: monaco, monospace;
+    white-space: pre-wrap;
+  }
+  
+  .paste-bottom {
+    display: none;
+  }
+  .expanded {
+    display: block;
+  }
+  .paste-links {
+    display: block;
+    a {
+      color: @link_color;
+      cursor: pointer;      
+      margin-right: 1em;
+      text-decoration: underline;
+      font-size: 80%;
+    }
+    
+    margin-top: 4px;
+    padding-top: 2px;
+    border-top: 1px dotted @link_color;
+  }
+}
+
+.mentioned .paste-links {
+  border-color: @emph;
+  a {
+    color: @emph;
+  }
+}
+
+// SOUNDS
+.sound {
+  cursor: pointer;
+  
+  .content {
+    .wrap {
+      .sound-name {
+        display: none
+      }
+      
+      .de-emph;
+      padding-left: 2.25em;
+      background: url('sound.png') 8px center no-repeat;
+    }
+  }
+}
+.sound.first {
+  .content .wrap {
+  
+  }
+}
+
+// TWEETS
+.tweet {
+  .wrap {
+    .tweet-wrap {
+      .clearfix;
+      border: 1px solid #ccc;
+      padding: 0.5em;
+      background: white;
+      width: 100%;
+      max-width: 400px;
+    }
+    .tweet-avatar {
+      width: 60px;
+    }
+    .tweet-avatar, .tweet-content {
+      float: left;
+    }
+    .tweet-content {
+      width: 80%;
+      max-width: 340px;
+      padding-top: 0.25em;
+      .tweet-info {
+        padding-top: 0.75em;
+        font-size: 0.9em
+      }
+    }
+  }
+}
+
+// Post content
+.meta {
+  margin-top: 0 !important;
+  padding-bottom: 1em;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 1em;
+}
+
+.meta.last {
+  margin-top: 1em !important;
+  border-top: 1px solid #ccc;
+  padding-top: 1em;
+  border-bottom: none;
+}

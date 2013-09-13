@@ -1,0 +1,82 @@
+<?xml version='1.0'?>
+<!DOCTYPE signatures SYSTEM "file://localhost/System/Library/DTDs/BridgeSupport.dtd">
+<signatures version='1.0'>
+<constant name='JAListViewDraggingPasteboardType' type='@'/>
+<class name='JAListView'>
+<method selector='canCallDataSourceInParallel'>
+<retval type='B'/>
+</method>
+<method selector='conditionallyUseLayerBacking'>
+<retval type='B'/>
+</method>
+<method selector='isViewVisible:'>
+<retval type='B'/>
+</method>
+<method selector='reloadDataAnimated:'>
+<arg type='B' index='0'/>
+</method>
+<method selector='reloadDataWithAnimation:'>
+<arg function_pointer='true' type='@?' index='0'>
+<arg type='@'/>
+<arg type='@'/>
+<arg type='@'/>
+<arg type='@'/>
+<retval type='v'/>
+</arg>
+</method>
+<method selector='reloadLayoutAnimated:'>
+<arg type='B' index='0'/>
+</method>
+<method selector='reloadLayoutWithAnimation:'>
+<arg function_pointer='true' type='@?' index='0'>
+<arg type='@'/>
+<arg type='@'/>
+<arg type='@'/>
+<arg type='@'/>
+<retval type='v'/>
+</arg>
+</method>
+<method selector='setCanCallDataSourceInParallel:'>
+<arg type='B' index='0'/>
+</method>
+<method selector='setConditionallyUseLayerBacking:'>
+<arg type='B' index='0'/>
+</method>
+</class>
+<class name='NSObject'>
+<method selector='listView:shouldAcceptViews:location:'>
+<retval type='B'/>
+</method>
+<method selector='listView:shouldDragView:'>
+<retval type='B'/>
+</method>
+<method selector='listView:shouldSelectView:'>
+<retval type='B'/>
+</method>
+</class>
+<informal_protocol name='JAListViewDataSource'>
+<method type64='@32@0:8@16Q24' type='@16@0:4@8I12' selector='listView:viewAtIndex:'/>
+<method type64='Q24@0:8@16' type='I12@0:4@8' selector='numberOfItemsInListView:'/>
+</informal_protocol>
+<informal_protocol name='JAListViewDelegate'>
+<method type64='v32@0:8@16@24' type='v16@0:4@8@12' selector='listView:didDeselectView:'/>
+<method type64='v32@0:8@16@24' type='v16@0:4@8@12' selector='listView:didSelectView:'/>
+<method type64='v40@0:8@16@24@32' type='v20@0:4@8@12@16' selector='listView:mouseDownOnView:withEvent:'/>
+<method type64='v40@0:8@16@24@32' type='v20@0:4@8@12@16' selector='listView:mouseUpOnView:withEvent:'/>
+<method type64='v40@0:8@16@24@32' type='v20@0:4@8@12@16' selector='listView:rightMouseDownOnView:withEvent:'/>
+<method type64='B32@0:8@16@24' type='B16@0:4@8@12' selector='listView:shouldSelectView:'/>
+<method type64='v32@0:8@16@24' type='v16@0:4@8@12' selector='listView:willSelectView:'/>
+</informal_protocol>
+<informal_protocol name='JAListViewDraggingDestinationDelegate'>
+<method type64='v48@0:8@16@24{CGPoint=dd}32' type='v24@0:4@8@12{_NSPoint=ff}16' selector='listView:dragEnded:location:'/>
+<method type64='v48@0:8@16@24{CGPoint=dd}32' type='v24@0:4@8@12{_NSPoint=ff}16' selector='listView:dragEntered:location:'/>
+<method type64='v48@0:8@16@24{CGPoint=dd}32' type='v24@0:4@8@12{_NSPoint=ff}16' selector='listView:dragExited:location:'/>
+<method type64='v48@0:8@16@24{CGPoint=dd}32' type='v24@0:4@8@12{_NSPoint=ff}16' selector='listView:dragUpdated:location:'/>
+<method type64='B48@0:8@16@24{CGPoint=dd}32' type='B24@0:4@8@12{_NSPoint=ff}16' selector='listView:shouldAcceptViews:location:'/>
+</informal_protocol>
+<informal_protocol name='JAListViewDraggingSourceDelegate'>
+<method type64='v32@0:8@16@24' type='v16@0:4@8@12' selector='listView:didEndDraggingView:'/>
+<method type64='v32@0:8@16@24' type='v16@0:4@8@12' selector='listView:didStartDraggingView:'/>
+<method type64='B32@0:8@16@24' type='B16@0:4@8@12' selector='listView:shouldDragView:'/>
+</informal_protocol>
+</signatures>
